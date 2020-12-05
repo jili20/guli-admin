@@ -104,7 +104,7 @@ export default {
   methods: { // 创建具体的方法，调用 api js 中定义的接口方法
     // 讲师列表的方法
     getList(page = 1) { // 参数
-      this.page = page  // 赋值
+      this.page = page // 赋值
       teacher
         .getTeacherListPage(this.page, this.limit, this.teacherQuery)
         .then(response => {
