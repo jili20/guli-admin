@@ -42,7 +42,7 @@ export default {
   publihCourse(id) {
     return request({
       url: '/eduservice/course/publishCourse/' + id,
-      method: 'post'
+      method: 'delete'
     })
   },
   // TODO 课程列表
@@ -52,6 +52,12 @@ export default {
       url: '/eduservice/course',
       method: 'get'
     })
+  },
+  // 删除课程
+  deleteCourse(courseId) {
+    return request({
+      url: '/eduservice/course/' + courseId,
+      method: 'delete'
+    })
   }
-
 }

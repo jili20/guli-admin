@@ -61,19 +61,25 @@ export default {
       console.log('previous')
       this.$router.push({ path: '/course/chapter/1' })
     },
-
     publish() {
-      course.publihCourse(this.courseId)
-        .then(response => {
-          // 提示
-          this.$message({
-            type: 'success',
-            message: '课程发布成功!'
+      this.$confirm('确定发布', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        course.publihCourse(this.courseId)
+          .then(response => {
+            // 提示
+            this.$message({
+              type: 'success',
+              message: '课程发布成功!'
+            })
           })
-          // 跳转课程列表页面
-          this.$router.push({ path: '/course/list' })
-        })
+        // 跳转课程列表页面
+        this.$router.push({ path: '/course/list' })
+      })
     }
+
   }
 }
 </script>
