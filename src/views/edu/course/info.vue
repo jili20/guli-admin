@@ -40,8 +40,6 @@
             :value="subject.id"/>
         </el-select>
       </el-form-item>
-
-
       <!-- 课程讲师 TODO -->
       <!-- 课程讲师 -->
       <el-form-item label="课程讲师">

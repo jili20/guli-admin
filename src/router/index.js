@@ -109,14 +109,14 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/course', // 一级目录
+    path: '/course',
     component: Layout,
     redirect: '/course/list',
     name: '课程管理',
     meta: { title: '课程管理', icon: 'example' },
-    children: [ // 二级目录
+    children: [
       {
-        path: 'list ',
+        path: 'list',
         name: '课程列表',
         component: () => import('@/views/edu/course/list'),
         meta: { title: '课程列表', icon: 'table' }
