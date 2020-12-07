@@ -117,10 +117,10 @@ export default {
     }
   },
   created() {
-    //获取路由的id值
+    // 获取路由的id值
     if (this.$route.params && this.$route.params.id) {
       this.courseId = this.$route.params.id
-      //根据课程id查询章节和小节
+      // 根据课程id查询章节和小节
       this.getChapterVideo()
     }
   },
@@ -155,9 +155,9 @@ export default {
     },
     // 添加小节弹框的方法
     openVideo(chapterId) {
-      //弹框
+      // 弹框
       this.dialogVideoFormVisible = true
-      //设置章节id
+      // 设置章节id
       this.video.chapterId = chapterId
       // this.video = ''  // 清空所有，没有默认值，下面清空有默认值
       this.video.title = ''
@@ -250,18 +250,18 @@ export default {
     },
     // 添加章节
     addChapter() {
-      //设置课程id到chapter对象里面
+      // 设置课程id到chapter对象里面
       this.chapter.courseId = this.courseId
       chapter.addChapter(this.chapter)
         .then(response => {
-          //关闭弹框
+          // 关闭弹框
           this.dialogChapterFormVisible = false
-          //提示
+          // 提示
           this.$message({
             type: 'success',
             message: '添加章节成功!'
           })
-          //刷新页面
+          // 刷新页面
           this.getChapterVideo()
         })
     },
@@ -298,7 +298,7 @@ export default {
       this.$router.push({ path: '/course/info/' + this.courseId })
     },
     next() {
-      //跳转到第二步
+      // 跳转到第二步
       this.$router.push({ path: '/course/publish/' + this.courseId })
     }
   }
