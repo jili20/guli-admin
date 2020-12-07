@@ -14,9 +14,10 @@
           <el-option value="Draft" label="未发布"/>
         </el-select>
       </el-form-item>
-      <!-- 下面还没双向绑定值 v-model=" " -->
+      <!-- 下面还没双向绑定值 v-model="courseQuery. " -->
       <el-form-item label="添加时间">
         <el-date-picker
+          v-model="courseQuery.begin"
           type="datetime"
           placeholder="选择开始时间"
           value-format="yyyy-MM-dd HH:mm:ss"
@@ -26,6 +27,7 @@
       <el-form-item>
         <!-- 下面还没双向绑定值 v-model=" " -->
         <el-date-picker
+          v-model="courseQuery.end"
           type="datetime"
           placeholder="选择截止时间"
           value-format="yyyy-MM-dd HH:mm:ss"
@@ -115,11 +117,30 @@ export default {
   },
   methods: { // 创建具体的方法，调用teacher.js定义的方法
     // 讲师列表的方法
-    getList() {
-      course.getListCourse()
-        .then(response => { // 请求成功
-          // response接口返回的数据
-          this.list = response.data.list
+    // getList() {
+    //   course.getListCourse()
+    //     .then(response => { // 请求成功
+    //       // response接口返回的数据
+    //       this.list = response.data.list
+    //     })
+    // },
+
+    getList(page = 1) { // 参数
+      this.page = page // 赋值
+      course
+        .getCourseListPage(this.page, this.limit, this.courseQuery)
+        .then(response => {
+          // 请求成功
+          // response 接口返回的数据
+          // console.log(response);
+          this.list = response.data.rows
+          this.total = response.data.total
+          console.log(this.list)
+          console.log(this.total)
+        })
+        .catch(error => {
+          // 请求失败
+          console.log(error)
         })
     },
     resetData() { // 清空的方法

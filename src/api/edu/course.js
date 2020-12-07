@@ -59,5 +59,13 @@ export default {
       url: '/eduservice/course/' + courseId,
       method: 'delete'
     })
+  },
+  // 课程列表（条件查询分页）
+  getCourseListPage(current, limit, courseQuery) {
+    return request({
+      url: `/eduservice/course/pageCourseCondition/${current}/${limit}`,
+      method: 'post',
+      data: courseQuery
+    })
   }
 }
