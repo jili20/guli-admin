@@ -149,7 +149,7 @@ export default {
       // 查询所有讲师数据
       this.getList()
     },
-    // 删除讲师的方法
+    // 删除课程的方法
     removeDataById(courseId) {
       this.$confirm('此操作将永久删除课程记录, 是否继续?', '提示', {
         confirmButtonText: '确定',
